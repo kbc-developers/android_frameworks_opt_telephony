@@ -638,13 +638,13 @@ final class GsmServiceStateTracker extends ServiceStateTracker {
                         }
                     }
 
-                    loge("[DBG] regState=" + regState + " gprsState=" + gprsState + " newSS.getState()=" + newSS.getState());
+                    loge("[DBG] regState=" + regState + " mGsmRoaming=" + regCodeIsRoaming(regState) + " mNewSS.getState()=" + mNewSS.getState());
                     if (regState == 13 || regState == 2) {
-                       if (gprsState == ServiceState.STATE_IN_SERVICE) {
+                       if (regCodeIsRoaming(regState)) {
                            loge("[DBG] gprsState == ServiceState.STATE_IN_SERVICE");
                            regState = 1;
-                       } else if (newSS.getState() == ServiceState.STATE_IN_SERVICE) {
-                           loge("[DBG] newSS.getState() == ServiceState.STATE_IN_SERVICE");
+                       } else if (mNewSS.getState() == ServiceState.STATE_IN_SERVICE) {
+                           loge("[DBG] mNewSS.getState() == ServiceState.STATE_IN_SERVICE");
                            regState = 1;
                        } else {
                            loge("[DBG] STATE_OUT_SERVICE");
