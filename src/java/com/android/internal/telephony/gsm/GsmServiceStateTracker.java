@@ -650,6 +650,7 @@ final class GsmServiceStateTracker extends ServiceStateTracker {
                            loge("[DBG] STATE_OUT_SERVICE");
                        }
                     }
+
                     mGsmRoaming = regCodeIsRoaming(regState);
                     mNewSS.setState(regCodeToServiceState(regState));
                     mNewSS.setRilVoiceRadioTechnology(type);
